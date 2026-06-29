@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>standarthoid — Trilingual Comedy Writer & Creative Producer</title>
+  <meta name="description" content="Trilingual Comedy Writer & Creative Producer (DE/EN/ES). Helping brands find their voice in Spanish-speaking markets.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0A0A0A;
+      --offwhite: #F2EFE8;
+      --coral: #E8432D;
+      --warm-mid: #1A1815;
+      --muted: #6B6560;
+      --border: rgba(242,239,232,0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--offwhite);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 3rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: .08em;
+      color: var(--offwhite);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--offwhite); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      padding: 0 0 0 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-content {
+      padding-bottom: 5rem;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-image {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--black) 0%, transparent 40%);
+      z-index: 1;
+    }
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30%;
+      background: linear-gradient(to top, var(--black) 0%, transparent 100%);
+      z-index: 1;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 40%, rgba(232,67,45,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(242,239,232,0.03) 0%, transparent 50%);
+    }
+    .hero-lang-bar {
+      position: absolute;
+      top: 50%;
+      right: 3rem;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      align-items: flex-end;
+    }
+    .lang-item {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .lang-label {
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .15em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .lang-bar-fill {
+      height: 1px;
+      background: var(--coral);
+      opacity: 0.6;
+    }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 6vw, 7.5rem);
+      line-height: .92;
+      letter-spacing: .02em;
+      color: var(--offwhite);
+      position: relative;
+      max-width: 100%;
+    }
+    .hero-title .accent { color: var(--coral); }
+    .hero-sub {
+      margin-top: 2rem;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 480px;
+      position: relative;
+      line-height: 1.7;
+    }
+    .hero-cta {
+      margin-top: 2.5rem;
+      position: relative;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .btn {
+      display: inline-block;
+      padding: .75rem 1.75rem;
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .btn-primary {
+      background: var(--coral);
+      color: var(--offwhite);
+    }
+    .btn-primary:hover { background: #d63a25; }
+    .btn-ghost {
+      border: 0.5px solid var(--border);
+      color: var(--muted);
+    }
+    .btn-ghost:hover { color: var(--offwhite); border-color: rgba(242,239,232,0.3); }
+
+    /* SECTIONS */
+    section { padding: 6rem 3rem; }
+    .section-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: .65rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: .03em;
+      color: var(--offwhite);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ABOUT */
+    .about {
+      background: var(--warm-mid);
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      max-width: 1100px;
+    }
+    .about-text {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(242,239,232,0.75);
+    }
+    .about-text p + p { margin-top: 1.25rem; }
+    .about-text strong { color: var(--offwhite); font-weight: 500; }
+    .about-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding-top: .5rem;
+    }
+    .stat-item {
+      border-left: 1px solid var(--coral);
+      padding-left: 1.25rem;
+    }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--offwhite);
+    }
+    .stat-label {
+      font-size: .75rem;
+      font-weight: 400;
+      letter-spacing: .08em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: .25rem;
+    }
+
+    /* WORK */
+    .work { background: var(--black); }
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5px;
+      margin-top: 3rem;
+      background: var(--border);
+    }
+    .work-card {
+      background: var(--black);
+      padding: 2.5rem;
+      transition: background .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .work-card:hover { background: var(--warm-mid); }
+    .work-card-num {
+      font-family: 'DM Mono', monospace;
+      font-size: .65rem;
+      letter-spacing: .2em;
+      color: var(--coral);
+      margin-bottom: 1.5rem;
+    }
+    .work-card-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: .04em;
+      color: var(--offwhite);
+      margin-bottom: .75rem;
+      line-height: 1;
+    }
+    .work-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-bottom: 1rem;
+    }
+    .tag {
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .25rem .6rem;
+      border: 0.5px solid var(--border);
+      color: var(--muted);
+    }
+    .work-card-desc {
+      font-size: .9rem;
+      color: rgba(242,239,232,0.6);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .work-card-link {
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--coral);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      transition: gap .2s;
+    }
+    .work-card-link:hover { gap: .75rem; }
+    .work-card-coming {
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* SERVICES */
+    .services {
+      background: var(--warm-mid);
+      border-top: 0.5px solid var(--border);
+    }
+    .services-list {
+      margin-top: 3rem;
+      max-width: 900px;
+    }
+    .service-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: baseline;
+      padding: 1.75rem 0;
+      border-bottom: 0.5px solid var(--border);
+      gap: 2rem;
+    }
+    .service-item:first-child { border-top: 0.5px solid var(--border); }
+    .service-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.75rem;
+      letter-spacing: .04em;
+      color: var(--offwhite);
+    }
+    .service-langs {
+      font-family: 'DM Mono', monospace;
+      font-size: .65rem;
+      letter-spacing: .15em;
+      color: var(--coral);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .service-desc {
+      font-size: .85rem;
+      color: var(--muted);
+      margin-top: .35rem;
+      line-height: 1.6;
+      grid-column: 1;
+    }
+
+    /* LANGUAGES */
+    .languages { background: var(--black); }
+    .lang-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      margin-top: 3rem;
+      background: var(--border);
+    }
+    .lang-card {
+      background: var(--black);
+      padding: 2rem;
+    }
+    .lang-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      letter-spacing: .04em;
+      color: var(--offwhite);
+      line-height: 1;
+    }
+    .lang-level {
+      font-family: 'DM Mono', monospace;
+      font-size: .65rem;
+      letter-spacing: .15em;
+      color: var(--coral);
+      text-transform: uppercase;
+      margin-top: .4rem;
+    }
+    .lang-proof {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-top: .5rem;
+      line-height: 1.5;
+    }
+    .lang-card.passive .lang-name { color: var(--muted); }
+    .lang-card.passive .lang-level { color: rgba(107,101,96,0.6); }
+
+    /* CONTACT */
+    .contact {
+      background: var(--coral);
+      text-align: center;
+      padding: 7rem 3rem;
+    }
+    .contact .section-eyebrow { color: rgba(242,239,232,0.7); }
+    .contact .section-title { color: var(--offwhite); margin-bottom: 1rem; }
+    .contact-sub {
+      font-size: 1rem;
+      color: rgba(242,239,232,0.8);
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .contact .btn-primary {
+      background: var(--offwhite);
+      color: var(--coral);
+    }
+    .contact .btn-primary:hover { background: #e8e5de; }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      border-top: 0.5px solid var(--border);
+      padding: 2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: .1em;
+      color: var(--muted);
+    }
+    .footer-note {
+      font-family: 'DM Mono', monospace;
+      font-size: .65rem;
+      letter-spacing: .1em;
+      color: var(--muted);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 0; }
+      .hero-content { padding: 7rem 1.5rem 3rem; }
+      .hero-image { height: 50vh; }
+      .hero-title { font-size: clamp(3rem, 12vw, 5rem); }
+      .hero-lang-bar { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .work-grid { grid-template-columns: 1fr; }
+      .lang-grid { grid-template-columns: 1fr 1fr; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Standarthoid</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <div class="hero-lang-bar" style="position:relative;top:auto;right:auto;transform:none;flex-direction:row;margin-bottom:2rem;">
+      <div class="lang-item" style="margin-right:1.5rem;">
+        <div class="lang-bar-fill" style="width: 30px; margin-right:.5rem;"></div>
+        <span class="lang-label">DE</span>
+      </div>
+      <div class="lang-item" style="margin-right:1.5rem;">
+        <div class="lang-bar-fill" style="width: 30px; margin-right:.5rem;"></div>
+        <span class="lang-label">EN</span>
+      </div>
+      <div class="lang-item">
+        <div class="lang-bar-fill" style="width: 30px; margin-right:.5rem;"></div>
+        <span class="lang-label">ES</span>
+      </div>
+    </div>
+    <p class="hero-eyebrow">Trilingual Comedy Writer & Creative Producer</p>
+    <h1 class="hero-title">I make people<br>laugh in<br><span class="accent">three languages.</span></h1>
+    <p class="hero-sub">Helping European brands find their voice in Spanish-speaking markets — with writing, design, and a stand-up comedian's instinct for what actually lands.</p>
+    <div class="hero-cta">
+      <a href="#work" class="btn btn-primary">See the work</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <img src="comedy-photo.jpg" alt="Stand-up comedy performance in Spanish">
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <p class="section-eyebrow">Who I am</p>
+  <div class="about-grid">
+    <div>
+      <h2 class="section-title">One person.<br>Three languages.<br>One instinct.</h2>
+      <div class="about-text">
+        <p>I write, design, and make people laugh — in German, English, and Spanish. I'm based in Germany with a Master's in North & Latin American Studies, years in film production, a graphic design practice, a podcast I host, and a side life performing stand-up comedy in Spanish.</p>
+        <p>Before focusing on creative production, I spent years in film — writing <strong>love letters and fairy tale books as props</strong>, styling sets, managing budgets. That shaped how I think: every word and every visual either serves the story or it doesn't.</p>
+        <p>I also run <strong>Hankemacht</strong> — a curated marketplace for licensed film graphics, built for productions that need the right visual in the right format, fast.</p>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Languages at C2 or native</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Languages total</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Stand-up comedian in Spanish in the German-speaking world</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <p class="section-eyebrow">Selected work</p>
+  <h2 class="section-title">What I've built.</h2>
+  <div class="work-grid">
+
+    <div class="work-card">
+      <p class="work-card-num">01</p>
+      <h3 class="work-card-title">Hankemacht</h3>
+      <div class="work-card-tags">
+        <span class="tag">E-Commerce</span>
+        <span class="tag">Film</span>
+        <span class="tag">Grafikdesign</span>
+        <span class="tag">WooCommerce</span>
+      </div>
+      <p class="work-card-desc">Ein kuratierter Marktplatz für lizenzierte Filmgrafiken — speziell für Film- und TV-Produktionen. Shop-Architektur, Designer-Netzwerk und Lizenzmodell: von null aufgebaut.</p>
+      <a href="https://hankemacht.com" target="_blank" class="work-card-link">Visit Hankemacht →</a>
+    </div>
+
+    <div class="work-card">
+      <p class="work-card-num">02</p>
+      <h3 class="work-card-title">Comedy Writing in Spanish</h3>
+      <div class="work-card-tags">
+        <span class="tag">Comedy Writing</span>
+        <span class="tag">Brand Voice</span>
+        <span class="tag">Español</span>
+      </div>
+      <p class="work-card-desc">Brand voice samples written in Spanish for comedy-forward brands — showing how humor, timing, and cultural instinct translate into content that actually lands.</p>
+      <span class="work-card-coming">Coming soon</span>
+    </div>
+
+    <div class="work-card">
+      <p class="work-card-num">03</p>
+      <h3 class="work-card-title">Dein Ernst?!</h3>
+      <div class="work-card-tags">
+        <span class="tag">Podcast</span>
+        <span class="tag">Produktion</span>
+        <span class="tag">Deutsch</span>
+      </div>
+      <p class="work-card-desc">Ein Podcast über Alltagsgeschichten im Patriarchat — produziert, moderiert und geschnitten. Weil gutes Storytelling funktioniert, egal ob du eine Marke verkaufst oder ein System hinterfragst.</p>
+      <span class="work-card-coming">Link coming soon</span>
+    </div>
+
+    <div class="work-card">
+      <p class="work-card-num">04</p>
+      <h3 class="work-card-title">Trilingual Copy</h3>
+      <div class="work-card-tags">
+        <span class="tag">Copywriting</span>
+        <span class="tag">DE / EN / ES</span>
+        <span class="tag">Transcreation</span>
+      </div>
+      <p class="work-card-desc">The same message, written three ways — not translated, but culturally adapted for German, English, and Spanish-speaking audiences. With notes on every decision.</p>
+      <span class="work-card-coming">Coming soon</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <p class="section-eyebrow">What I do</p>
+  <h2 class="section-title">Services.</h2>
+  <div class="services-list">
+    <div class="service-item">
+      <div>
+        <div class="service-name">Comedy Writing & Brand Voice</div>
+        <div class="service-desc">Tone of voice development, campaign copy, and social content with real humor — not just "witty".</div>
+      </div>
+      <div class="service-langs">EN · ES · DE</div>
+    </div>
+    <div class="service-item">
+      <div>
+        <div class="service-name">Copywriting & Transcreation</div>
+        <div class="service-desc">Trilingual content that sounds like it was written for each market — because it was.</div>
+      </div>
+      <div class="service-langs">DE · EN · ES</div>
+    </div>
+    <div class="service-item">
+      <div>
+        <div class="service-name">Graphic Design</div>
+        <div class="service-desc">Visual assets, editorial design, and brand identity using Adobe Illustrator, InDesign, and Photoshop.</div>
+      </div>
+      <div class="service-langs">Visual</div>
+    </div>
+    <div class="service-item">
+      <div>
+        <div class="service-name">Podcast Production</div>
+        <div class="service-desc">Concept, recording, editing, and distribution — from solo episodes to interview formats.</div>
+      </div>
+      <div class="service-langs">DE · EN · ES</div>
+    </div>
+    <div class="service-item">
+      <div>
+        <div class="service-name">Latam Market Entry Communication</div>
+        <div class="service-desc">For European companies entering Spanish-speaking markets — content that doesn't sound translated.</div>
+      </div>
+      <div class="service-langs">ES · EN</div>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGES -->
+<section class="languages">
+  <p class="section-eyebrow">Languages</p>
+  <h2 class="section-title">The proof is in the punchline.</h2>
+  <div class="lang-grid">
+    <div class="lang-card">
+      <div class="lang-name">Deutsch</div>
+      <div class="lang-level">Muttersprache</div>
+      <div class="lang-proof">Native speaker. The language I think in.</div>
+    </div>
+    <div class="lang-card">
+      <div class="lang-name">English</div>
+      <div class="lang-level">C2 — Proficient</div>
+      <div class="lang-proof">The language I work in internationally.</div>
+    </div>
+    <div class="lang-card">
+      <div class="lang-name">Español</div>
+      <div class="lang-level">C2 — Proficient</div>
+      <div class="lang-proof">The language I perform stand-up in. That's the real test.</div>
+    </div>
+    <div class="lang-card passive">
+      <div class="lang-name">Italiano</div>
+      <div class="lang-level">B2 — Working</div>
+      <div class="lang-proof">Professional working proficiency.</div>
+    </div>
+    <div class="lang-card passive">
+      <div class="lang-name">Português</div>
+      <div class="lang-level">A1 — Elementary</div>
+      <div class="lang-proof">Growing. With Spanish C2, faster than you'd think.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <p class="section-eyebrow">Get in touch</p>
+  <h2 class="section-title">Let's work together.</h2>
+  <p class="contact-sub">Expanding into Latin America? Building a multilingual brand? Looking for someone who handles the full creative package — and makes it funny?</p>
+  <a href="mailto:your@email.com" class="btn btn-primary">Write me</a>
+</section>
+
+<footer>
+  <span class="footer-logo">Standarthoid</span>
+  <span class="footer-note">DE · EN · ES · IT · PT</span>
+</footer>
+
+</body>
+</html>
